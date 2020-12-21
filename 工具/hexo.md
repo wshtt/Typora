@@ -230,6 +230,7 @@ $ hexo clean
 # 列出网站资料。
 $ hexo list <type>
 
+
 ```
 
 #### 部署到github
@@ -242,6 +243,7 @@ $ hexo list <type>
 名称只能为：用户名.github.io
 
 例如 wushutong.github.io
+
 ```
 
 ###### 3. 本地生成git 的 ssh key 并安装到github
@@ -252,6 +254,7 @@ $ hexo list <type>
 # 安装部署插件
 npm install hexo-deployer-git --save
 
+
 ```
 
 ###### 5.修改改_config.yml文件
@@ -261,6 +264,7 @@ deploy:
   type: git
   repository: git@github.com:wushutong/wushutong.github.io.git
   branch: master
+
 ```
 
 ###### 部署
@@ -269,6 +273,7 @@ deploy:
 hexo clean（清除缓存）
 hexo g（上传到仓库）
 hexo d（部署）
+
 ```
 
 #### 写博客
@@ -287,9 +292,10 @@ hexo d（部署）
 
 ```shell
 # 方式1.  git 直接拉取next 主题方式
-$ git clone https://github.com/iissnan/hexo-theme-next themes/next
+$ git clone https://github.com/next-theme/hexo-theme-next themes/next
 
 # 方式2. 手动 github 下载之后放在themes/next
+
 ```
 
 ###### 2.在`hexo/_config.yml`中修改使用的主题
@@ -297,6 +303,7 @@ $ git clone https://github.com/iissnan/hexo-theme-next themes/next
 ```yml
 # hexo/_config.yml (修改使用的主题，指定为theme/next)
 theme: next
+
 ```
 
 ###### 3.添加主题备用配置文件
@@ -307,12 +314,14 @@ theme: next
 # 更名为 hexo/_config.next.yml
 
 # 只有当配置了 theme: next，并且 备用配置文件名为 _config.next.yml 才可以被加载
+
 ```
 
 ###### 4.执行clean清除缓存
 
 ```shell
 $ hexo clean
+
 ```
 
 
@@ -332,6 +341,7 @@ index_generator:
   path: ''			# 索引页路径
   per_page: 10		# 每页条数
   order_by: -date	# 排序字段
+
 ```
 
 
@@ -348,6 +358,7 @@ language:
 
 # 主题配置文件 hexo/_config.next.yml (配置语言切换)
 language_switcher: true
+
 ```
 
 - 升级
@@ -357,6 +368,7 @@ language_switcher: true
 $ cd themes / next 
 # pull
 $ git pull origin master
+
 ```
 
 - 
@@ -390,6 +402,7 @@ language:  		# 这里使用了多语言配置
     - zh-CN
     - en
 timezone: ''	# 默认电脑的时区
+
 ```
 
 - 网址信息
@@ -414,6 +427,7 @@ permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
+
 ```
 
 - 目录指定
@@ -440,6 +454,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render: # 直接写相对于source文件夹的文件名，将在渲染时不被主题修改
+
 ```
 
 - 写作规则
@@ -489,6 +504,7 @@ prismjs:
   preprocess: true
   line_number: true
   tab_replace: ''
+
 ```
 
 - 分类&标签
@@ -503,6 +519,7 @@ prismjs:
 default_category: uncategorized
 category_map:
 tag_map:
+
 ```
 
 - 分页
@@ -515,6 +532,7 @@ tag_map:
 ```yml
 per_page: 10
 pagination_dir: page
+
 ```
 
 - 部署位置
@@ -524,6 +542,7 @@ deploy:
   type: git		# 类型
   repository: git@github.com:wushutong/wushutong.github.io.git	# 仓库
   branch: master	# 分支
+
 ```
 
 - 其他
@@ -547,6 +566,7 @@ deploy:
 #scheme: Mist		# 单列视图
 #scheme: Pisces		# 双柱
 scheme: Gemini		# 带阴影
+
 ```
 
 - 网站图标
@@ -564,6 +584,7 @@ favicon:
   
 # 生成图标网址，需要翻墙
 https://realfavicongenerator.net/
+
 ```
 
 - Custom Logo 徽标
@@ -571,6 +592,7 @@ https://realfavicongenerator.net/
 ```yml
 # hexo/_config.next.yml (Scheme Mist 不支持)
 custom_logo: #/uploads/custom-logo.jpg
+
 
 ```
 
@@ -599,6 +621,7 @@ sidebar:
   padding: 18
   # Sidebar offset from top menubar in pixels (only for Pisces | Gemini). 偏移
   offset: 12
+
 ```
 
 - 头像
@@ -677,6 +700,7 @@ toc:
 # 名称： 链接
 links:
   #Title: https://example.com
+
 ```
 
 - 喜欢的链接样式控制
@@ -688,6 +712,7 @@ links_settings:
   title: Links			# 名称
   # Available values: block | inline
   layout: block			# 
+
 ```
 
 - 页脚
@@ -723,6 +748,7 @@ footer:
     gongan_num:
     # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
     gongan_icon_url:
+
 ```
 
 - 菜单页面
@@ -739,6 +765,7 @@ menu:
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
   #commonweal: /404/ || fa fa-heartbeat
+
 ```
 
 
