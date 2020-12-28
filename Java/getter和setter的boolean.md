@@ -29,12 +29,12 @@ public classGetterSetterTester{
         return JSON.toJSONString(this);
     }
  
-    publicstaticvoidmain(String[] args){
+    public staticvoidmain(String[] args){
         GetterSetterTester t = getterSetter();
         testJson(t);
     }
  
-    privatestatic GetterSetterTester getterSetter(){
+    private static GetterSetterTester getterSetter(){
         GetterSetterTester t = new GetterSetterTester();
         //基本类型：无论带不带is，都是isXxx,setXxx。   sun的标准，需要特殊注意
         t.isBusy();

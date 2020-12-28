@@ -288,6 +288,14 @@ hexo d（部署）
 
 [主题使用说明最新](https://theme-next.js.org/docs/theme-settings/footer)
 
+```json
+https://www.yunyoujun.cn/note/make-hexo-theme-yun/
+https://github.com/Siricee/hexo-theme-Chic
+https://github.com/next-theme/hexo-theme-next
+```
+
+
+
 ###### 1.将主题文件放到`themes`目录下
 
 ```shell
