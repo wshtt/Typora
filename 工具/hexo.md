@@ -278,6 +278,64 @@ hexo d（部署）
 
 #### 写博客
 
+###### 1.阅读全文样式
+
+```html
+<!--more--> 
+```
+
+###### 2.分类
+
+```shell
+# 创建分类页面
+hexo new page categories
+
+# 打开新增的页面，新增type
+---
+title: 文章分类
+date: 2017-05-27 13:47:40
+type: "categories"
+---
+
+# 对文章增加分类就行了
+---
+title: jQuery
+date: 2017-05-26 12:12:57
+categories: 
+- web前端
+---
+
+# - web前端 多个横杠不会数组的意思，第二个代表的是二级分类
+```
+
+3.标签
+
+```shell
+# 创建标签页面
+hexo new page tags
+
+# 打开新增的页面，添加type
+---
+title: 文章分类
+date: 2017-05-27 13:47:40
+type: "tags"
+---
+
+# 给文章添加标签
+---
+title: jQuery对表单的操作及更多应用
+date: 2017-05-26 12:12:57
+categories: 
+- web前端
+tags:
+- jQuery
+- 表格
+- 表单验证
+---
+
+# 标签可以添加多个
+```
+
 
 
 #### 主题
