@@ -14,7 +14,7 @@ springboot 为搭建程序的脚手架，可以快速地构建spring 项目。�
 
 ### 搭建项目
 
-#### 快速构建方式
+#### 1.快速构建方式
 
 1.  创建一个空项目
 
@@ -26,7 +26,7 @@ springboot 为搭建程序的脚手架，可以快速地构建spring 项目。�
 
 3. 选则要集成的东西，完成快速搭建
 
-#### 手动搭建
+#### 2.手动搭建
 
 1.  创建空项目
 
@@ -91,9 +91,9 @@ springboot 为搭建程序的脚手架，可以快速地构建spring 项目。�
    ```
 
 
-#### 解析
+#### 3.配置解析
 
-###### @SpringBootApplication
+###### 1.@SpringBootApplication
 
 注解内容为
 
@@ -228,7 +228,7 @@ public @interface ComponentScan {
 // 定义扫描的路径从中找出标识了需要装配的类自动装配到spring的bean容器中
 ```
 
-###### spring-boot-starter-parent
+###### 2.spring-boot-starter-parent
 
 ```xml
 <parent>
@@ -251,7 +251,7 @@ public @interface ComponentScan {
   </parent>
 ```
 
-###### spring-boot-starter-web
+###### 3.spring-boot-starter-web
 
 ```xml
         <dependency>
@@ -309,7 +309,7 @@ public @interface ComponentScan {
   </dependencies>
 ```
 
-###### @RestController
+###### 4.@RestController
 
 注解继承了
 
@@ -330,7 +330,7 @@ public @interface RestController {
 }
 ```
 
-###### @GetMapping
+###### 5.@GetMapping
 
 `@GetMapping` 继承了
 
@@ -348,7 +348,7 @@ public @interface GetMapping {
 }
 ```
 
-###### 配置文件  yaml/yml
+###### 6.配置文件  yaml/yml
 
 springboot支持yml、yaml、properties格式的配置文件
 
