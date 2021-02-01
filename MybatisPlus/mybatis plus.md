@@ -88,7 +88,7 @@ entity
 ​      
 查询
 
-```
+```java
 1. selectByMap(Map<String,Object>)   数据库字段名，数据
 
 2. Wrapper 的两种创建方式

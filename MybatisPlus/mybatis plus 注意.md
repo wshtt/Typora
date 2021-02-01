@@ -1,46 +1,63 @@
 # MyBatis Plus注意
 
-1. mybatis-plus 默认不会保存/更换新空内容进数据库。如果要将字段设置为null，需要在实体类添加 `@TableField(strategy=FieldStrategy.NOT_EMPTY)`
+1. ###### mybatis-plus 默认不会保存/更换新空内容进数据库。如果要将字段设置为null，需要在实体类添加 `@TableField(strategy=FieldStrategy.NOT_EMPTY)`
 
-2. 默认主键名为 id ，可以通过 @TableId 指定主键
+2. ###### 默认主键名为 id ，可以通过 @TableId 指定主键
 
-3. mybatisplus Wrapper的or使用
+3. ###### mybatisplus Wrapper的or使用
+    
     //mybatisplus版本3.0.7.1 jdk1.8 
     
-        queryWrapper.and(wrapper -> wrapper.eq("pid", bid).or().eq("pid2", bid));
-        //执行sql
-        select * form business where deleted=0 and (pid=1 or pid2=1)
-
+    ```java
+    queryWrapper.and(wrapper -> wrapper.eq("pid", bid).or().eq("pid2", bid));
+//执行sql
+    select * form business where deleted=0 and (pid=1 or pid2=1)
+    ```
+    
     //mybatisplus版本低于3.0.7.1
     
-        queryWrapperw.andNew().eq("pid", bid).or().eq("pid2", bid);
-        //执行sql
-        select * form business where deleted=0 and (pid=1 or pid2=1)
+    ```java
+    queryWrapperw.andNew().eq("pid", bid).or().eq("pid2", bid);
+    //执行sql
+    select * form business where deleted=0 and (pid=1 or pid2=1)
+    ```
     
-4. mapper 配置文件配置mapper 存放位置
-        mybatis-plus:
-          mapper-locations:
-            - com/mp/mapper/*
+4. ###### mapper 配置文件配置mapper 存放位置
+    
+    ```yml
+    mybatis-plus:
+    	mapper-locations:
+    		- com/mp/mapper/*
+    
+    ```
+    
+    
 
+5. ###### 分页 page
 
-
-5. 分页 page
-
-          参数 page querywrapper
+      ```java
+      参数 page querywrapper
+      
         IPage<T> selectPage(IPage<T> page, @Param(Constants.WRAPPER) Wrapper<T> queryWrapper);
         IPage<Map<String, Object>> selectMapsPage(IPage<T> page, @Param(Constants.WRAPPER) Wrapper<T> queryWrapper);
       
         new Page(1,10,false) 当前页/每页条数/是否查询总记录数。（false则为查询的total为空，少一条sql）
+      ```
       
-6. 自定义sql分页
+      
+6. ###### 自定义sql分页
 
-          dao层写自定义分页接口
+      ```java
+      dao层写自定义分页接口
+      
         IPage<Map<String, Object>> selectMyPage(IPage<T> page, @Param(Constants.WRAPPER) Wrapper<T> queryWrapper);
       
         接口对应的sql
         select * from user ${ew.customSqlSegment}
+      ```
       
-7. 主键策略    默认雪花算法
+      
+7. ###### 主键策略    默认雪花算法
 
     ```java
     /**
@@ -72,12 +89,15 @@
     ID_WORKER_STR(5);
     ```
     
+    ######     全局id策略
     
-    ​    
-    ​    全局id策略
+    ```yaml
       mybatis-plus:
        global-config:
-    ​    id-type: uuid
+        id-type: uuid
+    ```
+    
+    
     ​    
     
 8. Active Record 模式  直接通过对象调用
@@ -93,17 +113,19 @@
 
   使用
 
-        UserPo userPo = new UserPo();
-        userPo.setId(36);
-        // 通过设置实体上的数据查询
-        UserPo userPo1 = userPo.selectById();
-        logger.info("selectById1:"+userPo1);
-        // 通过直接传参查询
-        UserPo userPo2 = userPo.selectById(36);
-        logger.info("selectById2:"+userPo2);
-        // 通过构造wrapper查询
-        UserPo userPo3 = userPo.selectOne(new QueryWrapper<UserPo>().lambda().eq(UserPo::getId, 36));
-        logger.info("selectOne3:"+userPo3);
+```java
+    UserPo userPo = new UserPo();
+    userPo.setId(36);
+    // 通过设置实体上的数据查询
+    UserPo userPo1 = userPo.selectById();
+    logger.info("selectById1:"+userPo1);
+    // 通过直接传参查询
+    UserPo userPo2 = userPo.selectById(36);
+    logger.info("selectById2:"+userPo2);
+    // 通过构造wrapper查询
+    UserPo userPo3 = userPo.selectOne(new QueryWrapper<UserPo>().lambda().eq(UserPo::getId, 36));
+    logger.info("selectOne3:"+userPo3);
+```
 
 
 9. 注解`@MapperScan`
