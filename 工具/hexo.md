@@ -21,7 +21,7 @@ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（�
 
 ###### 安装
 
-1. 
+1. install
 
 ```shell
 $ npm install -g hexo-cli
@@ -59,7 +59,7 @@ $ cd <folder>
 $ npm install
 ```
 
-##### 2、 建好目录
+##### 2、 hexo目录
 
 ```shell
 .
@@ -77,7 +77,7 @@ $ npm install
 
 - _config.yml ：配置大部分的参数
 - package.json：应用程序的信息。[EJS](https://ejs.co/), [Stylus](http://learnboost.github.io/stylus/) 和 [Markdown](http://daringfireball.net/projects/markdown/) renderer 已默认安装，您可以自由移除。
-- scaffolds：模版 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件
+- scaffolds：模版文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件
 - source：资源文件夹是存放用户资源的地方。除 `_posts` 文件夹之外，开头命名为 `_` (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 `public` 文件夹，而其他文件会被拷贝过去。
 - themes：主题文件夹。Hexo 会根据主题来生成静态页面。
 
@@ -278,13 +278,16 @@ hexo d（部署）
 
 #### 写博客
 
-###### 1.阅读全文样式
+###### 1.摘要
 
 ```html
+手动，在摘要后面添加
 <!--more--> 
 ```
 
 ###### 2.分类
+
+其他菜单同理
 
 ```shell
 # 创建分类页面
@@ -623,7 +626,7 @@ deploy:
 
 
 
-- Scheme 主题方案
+###### Scheme 主题方案
 
 ```yml
 # hexo/_config.next.yml
@@ -635,7 +638,7 @@ scheme: Gemini		# 带阴影
 
 ```
 
-- 网站图标
+###### 网站图标
 
 ```yml
 # 默认图标放置在 hexo/themes/next/source/images/ 下面
@@ -653,7 +656,7 @@ https://realfavicongenerator.net/
 
 ```
 
-- Custom Logo 徽标
+###### Custom Logo 徽标
 
 ```yml
 # hexo/_config.next.yml (Scheme Mist 不支持)
@@ -662,7 +665,7 @@ custom_logo: #/uploads/custom-logo.jpg
 
 ```
 
-- 侧边栏
+###### 侧边栏
 
 ```yml
 # hexo/_config.next.yml
@@ -690,14 +693,14 @@ sidebar:
 
 ```
 
-- 头像
+###### 头像
 
 ```yml
 # hexo/_config.next.yml
 
 avatar:
   # url 放置头像图片
-  # 1. 如果图片放在了hexo/source/uploads/ 中，url： source/uploads/avatar.gif
+  # 1. 如果图片放在了hexo/source/uploads/ 中，url：/uploads/avatar.gif
   # 2. 如果图片放在了主题目录source/images/中，url: /images/avatar.gif
   # 3. 直接使用网络图片
   url: #/images/avatar.gif
@@ -707,14 +710,14 @@ avatar:
   rotated: false
 ```
 
-- 侧边栏帖子计数
+###### 侧边栏帖子计数
 
 ```yml
 # hexo/_config.next.yml
 site_state: true
 ```
 
-- 社交软件链接
+###### 社交软件链接
 
 ```yml
 # hexo/_config.next.yml
@@ -732,7 +735,7 @@ social:
   #Skype: skype:yourname?call|chat || fab fa-skype
 ```
 
-- 社交图标效果
+###### 社交图标效果
 
 ```yml
 # hexo/_config.next.yml
@@ -743,7 +746,7 @@ social_icons:
   transition: false
 ```
 
-- 侧边栏目录
+###### 侧边栏目录
 
 ```yml
 # hexo/_config.next.yml
@@ -759,7 +762,7 @@ toc:
   max_depth: 6
 ```
 
-- 添加自己喜欢的链接
+###### 添加自己喜欢的链接
 
 ```yml
 # hexo/_config.next.yml
@@ -769,7 +772,7 @@ links:
 
 ```
 
-- 喜欢的链接样式控制
+###### 喜欢的链接样式控制
 
 ```yml
 # hexo/_config.next.yml
@@ -781,7 +784,7 @@ links_settings:
 
 ```
 
-- 页脚
+###### 页脚
 
 ```yml
 # hexo/_config.next.yml
@@ -817,7 +820,7 @@ footer:
 
 ```
 
-- 菜单页面
+###### 菜单页面
 
 ```yml
 # hexo/_config.next.yml
@@ -836,3 +839,14 @@ menu:
 
 
 
+
+
+
+
+#### 问题
+
+
+
+##### `WARN No layout: index.html`
+
+主题有问题，配置问题或者无主题
