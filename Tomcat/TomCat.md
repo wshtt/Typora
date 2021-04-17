@@ -1,27 +1,37 @@
 # tomcat
 
-1. 目录
+#### 1.目录
 
-        bin：可以执行文件。
-        conf：tomcat服务器的配置文件
-        lib：tomcat启动后需要依赖的jar包
-        logs：tomcat工作之后的日志文件
-        webapps：是tomcat布暑工程的目录。
-        work：jsp文件在被翻译之后，保存在当前这个目录下，session对象被序列化之后保存的位置
-    
-2. 启动
+- **bin**：可以执行文件。
+  - (startup.bat/startup.sh,shutdown.bat/shutdown.sh 启动停止命令)
+- **conf**：tomcat服务器的配置文件
+  - logging.properties：日志配置文件
+  - server.xml：tomcat基本配置信息
+  - tomcat-users.xml：角色用户配置
+  - web.xml：应用部署的配置文件
+- **lib**：tomcat启动后需要依赖的jar包
+- **logs**：tomcat工作之后的日志文件
+- **webapps**：是tomcat布暑工程的目录。
+- **work**：jsp文件在被翻译之后，保存在当前这个目录下，session对象被序列化之后保存的位置
 
-        1. 双击/bin/startup.bat
-        2. 在命令行安装目录bin下，执行catalina run，会提示启动信息。
 
-3. 乱码
 
-        日志打印乱码，在conf/logging.properties中，更改显示编码为本地电脑显示编码
-        java.util.logging.ConsoleHandler.encoding = UTF-8
-        修改为
-        java.util.logging.ConsoleHandler.encoding = GBK
+#### 2.启动
 
-4. 版本 tomcat 依赖于java版本，64与32混用会报错
+```json
+1. 双击/bin/startup.bat
+2. 在命令行安装目录bin下，执行catalina run，会提示启动信息。
+3. 默认端口 8080
+```
+#### 3.乱码
+
+```
+日志打印乱码，在conf/logging.properties中，更改显示编码为本地电脑显示编码
+java.util.logging.ConsoleHandler.encoding = UTF-8
+修改为
+java.util.logging.ConsoleHandler.encoding = GBK
+```
+#### 4.版本 tomcat 依赖于java版本，64与32混用会报错
 
 5. 端口修改
 
@@ -44,7 +54,7 @@
             相当于前面的指定了 名称和位置
             
         3. 将项目打成war包放在webapps目录下，名称为项目名。
-    
+        
         4. 直接通过ip+端口访问的是/webapps/ROOT目录项目，如果有一个叫ROOT的项目，则直接通过ip+端口访问
 
 
