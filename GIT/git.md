@@ -40,8 +40,10 @@
 
 ### 三、 Git 配置
 
-    Git 提供了一个叫做 git config 的工具，专门用来配置或读取相应的工作环境变量。
-    这些环境变量，决定了 Git 在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：
+```markdown
+Git 提供了一个叫做 git config 的工具，专门用来配置或读取相应的工作环境变量。
+这些环境变量，决定了 Git 在各个环节的具体工作方式和行为。这些变量可以存放在以下三个不同的地方：
+```
 
 >/etc/gitconfig 文件：系统中对所有用户都普遍适用的配置。若使用 git config 时用 --system 选项，读写的就是这个文件。
 
@@ -525,7 +527,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC+kHYOhxBWSk9XydyJt9FmmNTlOHPGN8RfzKAXXZjU
 ```
 
 
- 
+
 
 #### config 配置多个 ssh key 来配置多个远程仓库
 
@@ -679,5 +681,24 @@ Hi wushutong! You've successfully authenticated, but GitHub does not provide she
 
 $ ssh -T git@github.com
 Hi wushutong! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+
+
+##### (3)windows 凭据管理
+
+Windows版本的Git会默认使用Windows凭据来保存Git验证身份，（使用 ssh key 则不需要使用这个）
+
+```
+控制面板==》用户账户==》凭据管理器
+
+
+```
+
+**管理是否windows 保存git 凭据**
+
+```
+Git安装根目录中的mingw64\etc\编辑gitconfig文件，删除最后helper = manager一行，然后保存。
+这样再次使用git，都会提示密码
 ```
 

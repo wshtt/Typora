@@ -151,21 +151,21 @@ Commercial subscriptions for nginx are available on:
 
 - 点击 `download`
 
-  ![image-20201027112553643](F:\GitFile\Typora\工具\nginx.assets\image-20201027112553643.png)
+  ![image-20201027112553643](.\nginx.assets\image-20201027112553643.png)
 
 - 选择稳定主线版本
 
-  ![image-20201027112714825](F:\GitFile\Typora\工具\nginx.assets\image-20201027112714825.png)
+  ![image-20201027112714825](.\nginx.assets\image-20201027112714825.png)
 
 - 选择指定安装方式
 
-  ![image-20201027112830309](F:\GitFile\Typora\工具\nginx.assets\image-20201027112830309.png)
+  ![image-20201027112830309](.\nginx.assets\image-20201027112830309.png)
 
   
 
 -  安装教程
 
-![image-20201027112911329](F:\GitFile\Typora\工具\nginx.assets\image-20201027112911329.png)
+![image-20201027112911329](.\nginx.assets\image-20201027112911329.png)
 
 
 
