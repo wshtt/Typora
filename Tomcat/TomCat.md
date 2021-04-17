@@ -18,12 +18,86 @@
 
 #### 2.启动
 
+启动流程：
+
+![image-20210417154944383](TomCat.assets/image-20210417154944383.png)
+
+加载配置文件，监听指定端口号
+
 ```json
 1. 双击/bin/startup.bat
 2. 在命令行安装目录bin下，执行catalina run，会提示启动信息。
 3. 默认端口 8080
 ```
-#### 3.乱码
+#### 3.tomcat 架构
+
+![image-20210417145812046](TomCat.assets/image-20210417145812046.png)
+
+###### Catalina
+
+tomcat的servlet容器。
+
+![image-20210417150456081](TomCat.assets/image-20210417150456081.png)
+
+
+
+![image-20210417115433635](TomCat.assets/image-20210417115433635.png)
+
+- 连接器：接收发送socket 请求
+- 容器：加载管理servlet，处理请求（**一个容器对应多个连接器**）
+- 连接器+容器组成service
+
+
+
+###### 1.连接器（Connector）：
+
+Coyote
+
+![image-20210417145138866](TomCat.assets/image-20210417145138866.png)
+
+- endpoint：接收socket请求，处理tcp/ip请求，转发给processor
+- processor：将请求数据转换为request对象
+- protocolHandler=endpoint+processor
+- Adapter：通过适配器模式转换request对象为servletRequest对象
+
+
+
+连接器分为两部分：
+
+1.处理i/o模型和底层协议
+
+- 传输层
+  - nio模型（默认）：非堵塞i/o，基于java nio类库
+  - nio2模型：基于 jdk7之后的nio2类库
+  - APR模型：采用apache可移植库进行实现
+- 应用层
+  - HTTP/1.1:大部分web应用采取的访问协议
+  - AJP协议：用于和web服务器集成，以实现对静态资源的优化和集群部署
+  - HTTP/2: 大幅度提升了web性能，tomcat8.5之后支持
+
+2.将请求数据转换为servletRequest
+
+
+
+###### 2.容器（Container）
+
+Tomcat有4种容器，他们是父子关系
+
+![image-20210417152650359](TomCat.assets/image-20210417152650359.png)
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+乱码
 
 ```
 日志打印乱码，在conf/logging.properties中，更改显示编码为本地电脑显示编码
