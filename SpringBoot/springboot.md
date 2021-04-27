@@ -12,9 +12,9 @@
 
 springboot 为搭建程序的脚手架，可以快速地构建spring 项目。减少xml配置（约定大于配置）
 
-### 搭建项目
+#### 搭建项目
 
-#### 1.快速构建方式
+##### 1.快速构建方式
 
 1.  创建一个空项目
 
@@ -26,7 +26,7 @@ springboot 为搭建程序的脚手架，可以快速地构建spring 项目。�
 
 3. 选则要集成的东西，完成快速搭建
 
-#### 2.手动搭建
+##### 2.手动搭建
 
 1.  创建空项目
 
@@ -90,8 +90,9 @@ springboot 为搭建程序的脚手架，可以快速地构建spring 项目。�
    
    ```
 
+##### 3.配置解析
 
-#### 3.配置解析
+
 
 ###### 1.@SpringBootApplication
 
@@ -228,6 +229,8 @@ public @interface ComponentScan {
 // 定义扫描的路径从中找出标识了需要装配的类自动装配到spring的bean容器中
 ```
 
+
+
 ###### 2.spring-boot-starter-parent
 
 ```xml
@@ -353,12 +356,14 @@ public @interface GetMapping {
 springboot支持yml、yaml、properties格式的配置文件
 
 - yml，一种语言语言格式，能够被更多的语言通用。
-
 - properties，java使用的，不通用
-
 - 配置文件加载顺序，yaml->yml->properties。后加载的配置文件会覆盖先加载的配置
 
-- yml 语法
+
+
+###### 7.yml 语法
+
+- 格式
 
 
 ```yml
@@ -421,6 +426,7 @@ public class HelloController {
     prefix = "server",
     ignoreUnknownFields = true
 )
+@PropertySource(value = "config.properties")   // 当配置文件不是application.yml 时，指定配置文件名。
 @Component // 声明配置类
 @Data // 需要有getter setter 方法
 public class ServerProperties {
@@ -429,6 +435,7 @@ public class ServerProperties {
     private Integer port;
     private InetAddress address;
 }
+
 ```
 
 
@@ -467,7 +474,9 @@ resources
 
 #### springboot整合其他框架
 
-##### springboot+mybatis
+##### 一、`springboot+mybatis`
+
+
 
 ###### 1、依赖
 
@@ -536,7 +545,9 @@ public class Demo01Application {
 
 
 
-##### springboot+mybatis plus
+##### 二、`springboot+mybatis plus`
+
+
 
 ###### 1.依赖
 
@@ -603,7 +614,9 @@ public class UserEntity {
 }
 ```
 
-##### springboot+thymeleaf
+##### 三、`springboot+thymeleaf`
+
+
 
 ###### 1.依赖
 
@@ -626,7 +639,9 @@ resources/static 	// 放置静态资源
 
 
 
-##### springboot单元测试
+##### 四、`springboot`单元测试
+
+
 
 ###### 1、依赖
 
@@ -645,6 +660,7 @@ resources/static 	// 放置静态资源
 ```java
   @RunWith(SpringRunner.class)
   @SpringBootTest(class = xxxApplication) //启动类
+// @SpringBootTest(classes = MqttApplication.class,webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) //有时需要添加指定参数
   public class HelloWorldControlerTests{
   
     @Test
@@ -653,6 +669,39 @@ resources/static 	// 放置静态资源
     }
   }
 ```
+
+
+
+五、`Redis`
+
+###### 1.依赖
+
+```xml
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+```
+
+###### 2.`yml`
+
+```yml
+spring:
+    redis:
+      host: 127.0.0.1 
+      port: 6379
+      password: 123456
+      jedis:
+        pool:
+          max-active: 8
+          max-wait: -1
+          max-idle: 500
+          min-idle: 0
+      lettuce:
+        shutdown-timeout: 0
+```
+
+
 
 七、自定义filter
 
@@ -854,27 +903,6 @@ resources/static 	// 放置静态资源
         notBetween	    NOT BETWEEN 条件语句
         addFilter	      自由拼接 SQL
         last	          拼接在最后，例如：last("LIMIT 1")
-
-十二、整合 Redis
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-    
-        spring:
-            redis:
-              host: 127.0.0.1 
-              port: 6379
-              password: 123456
-              jedis:
-                pool:
-                  max-active: 8
-                  max-wait: -1
-                  max-idle: 500
-                  min-idle: 0
-              lettuce:
-                shutdown-timeout: 0
 
 
 

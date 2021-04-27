@@ -29,6 +29,77 @@
 2. 在命令行安装目录bin下，执行catalina run，会提示启动信息。
 3. 默认端口 8080
 ```
+```java
+// 启动的main方法 Bootstrap.class下
+// package org.apache.catalina.startup
+
+public static void main(String[] args) {
+        synchronized(daemonLock) {
+            if (daemon == null) {
+                Bootstrap bootstrap = new Bootstrap();
+
+                try {
+                    bootstrap.init();
+                } catch (Throwable var5) {
+                    handleThrowable(var5);
+                    var5.printStackTrace();
+                    return;
+                }
+
+                daemon = bootstrap;
+            } else {
+                Thread.currentThread().setContextClassLoader(daemon.catalinaLoader);
+            }
+        }
+
+        try {
+            String command = "start";
+            if (args.length > 0) {
+                command = args[args.length - 1];
+            }
+
+            if (command.equals("startd")) {
+                args[args.length - 1] = "start";
+                daemon.load(args);
+                daemon.start();
+            } else if (command.equals("stopd")) {
+                args[args.length - 1] = "stop";
+                daemon.stop();
+            } else if (command.equals("start")) {
+                daemon.setAwait(true);
+                daemon.load(args);
+                daemon.start();
+                if (null == daemon.getServer()) {
+                    System.exit(1);
+                }
+            } else if (command.equals("stop")) {
+                daemon.stopServer(args);
+            } else if (command.equals("configtest")) {
+                daemon.load(args);
+                if (null == daemon.getServer()) {
+                    System.exit(1);
+                }
+
+                System.exit(0);
+            } else {
+                log.warn("Bootstrap: command \"" + command + "\" does not exist.");
+            }
+        } catch (Throwable var7) {
+            Throwable t = var7;
+            if (var7 instanceof InvocationTargetException && var7.getCause() != null) {
+                t = var7.getCause();
+            }
+
+            handleThrowable(t);
+            t.printStackTrace();
+            System.exit(1);
+        }
+
+    }
+```
+
+
+
 #### 3.tomcat 架构
 
 ![image-20210417145812046](TomCat.assets/image-20210417145812046.png)
@@ -105,7 +176,17 @@ java.util.logging.ConsoleHandler.encoding = UTF-8
 修改为
 java.util.logging.ConsoleHandler.encoding = GBK
 ```
-#### 4.版本 tomcat 依赖于java版本，64与32混用会报错
+#### 4.请求处理流程
+
+
+
+
+
+
+
+
+
+版本 tomcat 依赖于java版本，64与32混用会报错
 
 5. 端口修改
 
