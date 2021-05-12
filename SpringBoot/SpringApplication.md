@@ -324,9 +324,92 @@ private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoad
 
 ### Environment
 
-用来表示整个应用运行时的环境，为了更形象地理解Environment，你可以把Spring应用的运行时简单地想象成两个部分：一个是Spring应用本身，一个是Spring应用所处的环境。
+- `application.properties`中的内容是程序启动之后动态读取的，与应用程序是解耦的。
+
+- springboot 启动时，SpringApplication从以下位置加载配置文件，
+  - 当前目录的/config子目录
+  - 当前目录
+  - classpath下的/config目录
+  - classpath路径根目录
+    - 将`properties`中的键值对放到 Environment 中，
+    - 后加载的属性会覆盖先加载的属性
+
+
+
+##### 简介
+
+Environment用来表示整个应用运行时的环境，为了更形象地理解Environment，你可以把Spring应用的运行时简单地想象成两个部分：一个是Spring应用本身，一个是Spring应用所处的环境Environment。
+
+Environment为我们的Spring应用程序环境的两个方面的支持：profiles and properties。
 
 #### 1.profile
+
+profile的作用就是符合这个给定profile配置的bean的集合。
+
+在定义bean之后，会给bean指定profile，只有当profile处于active状态时，才会被创建。
+
+
+
+###### profile的使用
+
+- 最简单的方式切换配置文件
+- 通过profile指定要加载的配置文件
+
+```xml
+// 例如
+<beans profile="test">
+	<context:property-placeholder location="/WEB-INF/test.properties" />
+</beans>
+ 
+<beans profile="beta">
+	<context:property-placeholder location="/WEB-INF/beta.properties" />
+</beans>
+
+```
+
+
+
+![image-20210430173723099](SpringApplication.assets/image-20210430173723099.png)
+
+###### 激活指定profile方式
+
+- spring.profiles.active
+- spring.profiles.default
+
+如果自己不指定，那么会使用`spring.profiles.default`
+
+1.代码方式
+
+```java
+AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+ctx.getEnvironment().setActiveProfiles("development");
+ctx.refresh();
+```
+
+2.配置文件指定
+
+```xml
+
+<init-param>
+  <param-name>spring.profiles.active</param-name>
+  <param-value>beta</param-value>
+</init-param>
+```
+
+```yml
+spring:
+  #环境 dev|test|prod
+  profiles:
+    active: test
+```
+
+3.Tomcat启动参数指定
+
+```
+JAVA_OPTS="-Dspring.profiles.active=test"
+```
+
+
 
 
 

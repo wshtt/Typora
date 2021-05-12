@@ -158,25 +158,24 @@ Tomcat有4种容器，他们是父子关系
 
 
 
- 
 
 
-
-
-
-
-
-
-
-乱码
-
-```
-日志打印乱码，在conf/logging.properties中，更改显示编码为本地电脑显示编码
-java.util.logging.ConsoleHandler.encoding = UTF-8
-修改为
-java.util.logging.ConsoleHandler.encoding = GBK
-```
 #### 4.请求处理流程
+
+###### 1.路径流程
+
+`localhost8080/app/findAll`
+
+- `localhost`主机ip。
+- `8080` tomcat端口号。
+- 通过前`localhost8080`找到tomcat服务
+- tomcat默认启动一个`Catalina`服务器，它包括两部分，`Connector`连接器和`Container`容器。
+- `Connector`连接器将HTTP请求数据转换为servletRequest对象。
+- `Catalina`中有一个`Engine`，`Engine`对应主机ip`localhost`。
+- `Engine`中有多个`Host`，指定部署服务的文件路径，路径中有项目名称`app`。
+- `app`中解析出servlet并执行
+
+
 
 
 
@@ -223,3 +222,17 @@ java.util.logging.ConsoleHandler.encoding = GBK
           <localRepository>D:\maven-repository\repository</localRepository>
           
         2. 
+
+
+
+
+
+
+
+```
+日志打印乱码，在conf/logging.properties中，更改显示编码为本地电脑显示编码
+java.util.logging.ConsoleHandler.encoding = UTF-8
+修改为
+java.util.logging.ConsoleHandler.encoding = GBK
+```
+

@@ -53,7 +53,7 @@ use test01
 
 
 
-## 数据操作语言 (DML) 和 数据定义语言 (DDL)。
+## (DML) 和  (DDL)。
 
 SQL 分为 数据操作语言 (DML) 和 数据定义语言 (DDL)。
 
@@ -217,11 +217,11 @@ DELETE * FROM table_name
 
 
 
-## 条件查询
+## SQL条件查询
 
 
 
-#### 语法
+#### SQL查询语法
 
 ###### 1. SQL TOP /LIMIT
 

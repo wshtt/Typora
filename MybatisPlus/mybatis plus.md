@@ -2,17 +2,19 @@
 
 介绍 ：在 mybatis 的基础上只做增强不做改变，简化开发，提高效率。
 
-    1. 内置 CURD 操作
-    2. 内置通用 Mapper、通用 Service
-    3. 支持 Lambda 形式调用
-    4. 支持主键自动生成（内置四种主键生成策略）内含分布式唯一 ID 生成器 - Sequence
+```json
+1. 内置 CURD 操作
+2. 内置通用 Mapper、通用 Service
+3. 支持 Lambda 形式调用
+4. 支持主键自动生成（内置四种主键生成策略）内含分布式唯一 ID 生成器 - Sequence
+```
 
-mybatis plus 包括 
-  core 核心
-  generator 代码生成器
-  annotation 注解
-  extension 扩展
-  mybatis-plus-boot-starter springboot 启动器
+- mybatis plus 包括 
+  -  core 核心
+  -   generator 代码生成器
+  -   annotation 注解
+  -   extension 扩展
+  -   mybatis-plus-boot-starter springboot 启动器
 
 
 ## 一 配置环境
@@ -53,8 +55,8 @@ pom.xml
 </dependencies>
 ```
 
-application.yml
-    
+###### application.yml
+
 ```yaml
 spting.datasource.driver-class-name:
 spting.datasource.url:
@@ -62,15 +64,14 @@ spting.datasource.username:
 spting.datasource.password:
 ```
 
-
-dao
+###### dao
 
 ```markdown
 1. 继承baseMapper<entity名称>
 2. 在启动类添加MapperScan(Mapper路径)
 ```
 
-entity
+###### entity
 
 ```java
 1.@TaableName("表名") 对应数据库表名
@@ -84,9 +85,7 @@ entity
   (3) @TableFieid(exist=fase)   表明此字段数据库不存在
 ```
 
-
-​      
-查询
+##### 查询
 
 ```java
 1. selectByMap(Map<String,Object>)   数据库字段名，数据
