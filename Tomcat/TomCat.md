@@ -164,6 +164,20 @@ Tomcat有4种容器，他们是父子关系
 
 ###### 1.路径流程
 
+```shell
+=============================
+浏览器请求处理流程
+=============================
+ip + 端口
+https://www.alleys.vip/
+=============================
+先找本机的 hosts 文件，看是否有配置 域名对应的 ip。
+如果没有，再去请求 DNS 查找域名对应的 ip。
+=============================
+根据端口号查找指定 ip 监听该端口号的指定服务，
+再根据请求的域名查找服务中的 host 主机 
+```
+
 `localhost8080/app/findAll`
 
 - `localhost`主机ip。
@@ -181,7 +195,7 @@ Tomcat有4种容器，他们是父子关系
 
 
 
-
+==chrome浏览器每次请求都会请求网站的图标==
 
 
 
@@ -235,4 +249,85 @@ java.util.logging.ConsoleHandler.encoding = UTF-8
 修改为
 java.util.logging.ConsoleHandler.encoding = GBK
 ```
+
+#### Jasper 组件
+
+jasper 是 tomcat 的 jsp 核心引擎，tomcat 使用 jasper 对jsp 文件进行解析，生成 servlet ，执行并将结果返回给浏览器。
+
+index.jsp --> jspServlet -->index.jsp --> 解析各种文件，编译 -- 执行
+
+##### jsp编译后文件存放位置
+
+- 在web.xml 中配置了scratchdir，则编译后结果在配置的文件夹之下
+
+```xml
+        <init-param>
+            <param-name>scratchdir</param-name>
+            <param-value>C:/tmp/jsp</param-value>
+        </init-param>
+```
+
+- 如果没有配置该选项，则编译后的结果会存在安装目录的work/Catalina(Engine名称)/localhost(Host名称)/Context项目名称
+
+  - 如：`work/Catalina/localhost/app/org/apache/jsp`
+
+- 如果是idea，则编译后的文件会存放在
+
+  `C:\Users\Administrator\.IntelliJIdea2019.1\system\tomcat\_project_tomcat\work/Catalina/localhost/app/org/apache/jsp`
+
+##### jsp 编译方式
+
+###### 1.运行时编译
+
+tomcat 启动时不会编译 jsp 文件，在用户第一次访问的时候才会编译指定jsp文件。
+
+发送请求jsp请求项目名称-->jspServlet 中的 service 方法执行-->获取jsp路径--> 判定是否为预编译请求 -->执行serviceJspFile-->获取 JspServletWrapper，执行其中的 service 方法 --> 判断是否第一次调用此jsp，第一次执行就执行编译。 --> 生成 .java文件 -->生成 .class字节码文件。-->调用 jspServlet 执行请求 。。。。。-->response.write写道页面上
+
+![image-20210513143900766](TomCat.assets/image-20210513143900766.png)
+
+
+
+###### 2.预编译
+
+tomcat 启动时一次性将所有的jsp编译完成，web应用执行过程中不再需要进行实时编译。提升速度。
+
+安装 Apache Ant 来使用预编译
+
+
+
+##### JSP编译原理
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
