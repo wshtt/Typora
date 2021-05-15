@@ -117,17 +117,25 @@
 
 ```shell
 # 下载
- wget http://download.redis.io/releases/redis-6.0.8.tar.gz
+ wget http://download.redis.io/releases/redis-5.0.7.tar.gz
 # 解压
- tar xzf redis-6.0.8.tar.gz
+ tar -zvxf redis-5.0.7.tar.gz
+# 移动到 /usr/local 之下
+ mv /root/redis-5.0.7 /usr/local/redis
 # 进入目录
-cd redis-6.0.8
+cd /usr/local/redis
 # make 安装完成
  make
- 
-# 启动，可以指定配置文件启动，也可以不指定启动，不指定将使用默认配置文件
- cd src
- ./redis-server ../redis.conf
+# 安装，指定安装位置，这样可以直接删除redis文件夹来删除redis
+ make PREFIX=/usr/local/redis install
+ # 删除
+ rm -rf /usr/local/redis
+# 启动，可以指定配置文件启动，也可以不指定启动，不指定将使用默认配置文件 （带&为后台启动，不带&为显示启动）
+./bin/redis-server& ./redis.conf
+
+# 查看进程
+netstat -lanp | grep 6379
+ps -aux | grep redis
 ```
 
 #### redis的数据结构
